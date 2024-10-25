@@ -1,0 +1,38 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 20px;
+    background-color: #1c1c1c; /* Background color */
+    color: #ffffff; /* Text color */
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #2c2c2c; /* Table background */
+}
+
+.td {
+    padding: 10px;
+    border: 1px solid #444; /* Border color */
+}
+
+.green {
+    background-color: #3b3b3b; /* Greenish color for input rows */
+}
+
+.blue {
+    background-color: #4a4a4a; /* Bluish color for input rows */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #888; /* Border color */
+    border-radius: 4px;
+    background-color: #444; /* Input background */
+    color: #fff; /* Input text color */
+} 
+input[type="text"]:focus,

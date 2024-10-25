@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri_Lutfi</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    
+    <!-- Tambahkan link Google Font Metal Mania -->
+    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
+
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Mengatur dasar halaman */
+        body {
+            font-family: 'Metal Mania', cursive;
+            background-color: #1f1f1f;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin: 20px 0;
+            color: #0f9116;
+            text-shadow: 2px 2px #e2d9d8;
+            font-weight: bold;
+            font-family: 'Metal Mania', cursive;
+        }
+
+        /* Gaya untuk galeri */
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-item img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.4s ease-in-out;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Gaya untuk modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 80%;
+            max-height: 80%;
+            animation-name: zoom;
+            animation-duration: 0.6s;
+            border: 5px solid #f39c12;
+            border-radius: 10px;
+            transition: transform 0.4s ease;
+        }
+
+        /* Efek zoom untuk gambar modal */
+        @keyframes zoom {
+            from {transform: scale(0)}
+            to {transform: scale(1)}
+        }
+
+        /* Tombol close modal */
+        .close {
+            position: absolute;
+            top: 30px;
+            right: 35px;
+            color: #f39c12;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover, .close:focus {
+            color: #e74c3c;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Responsif untuk tablet */
+        @media (max-width: 900px) {
+            .gallery-item {
+                flex: 1 1 calc(50% - 20px);
+                max-width: calc(50% - 20px);
+            }
+        }
+
+        /* Responsif untuk ponsel */
+        @media (max-width: 600px) {
+            .gallery-item {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+
+            .gallery-item img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <a class="navbar-brand" href="index.html" style="color: white;">Home</a>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="galeri.html" style="color: white;">Galeri</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="kontak.html" style="color: white;">Contact</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="profile.html" style="color: white;">About me</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <a href="table.html" class="btn btn-outline-success" type="submit">Registrasi</a>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+    <h1 style="text-decoration: underline;"> Galeri Foto</h1>
+    <div class="gallery-container">
+        <div class="gallery-item">
+            <img src="images(5).jpg" alt="Foto 1" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item"><img src="images (1).jpg" alt="Foto 2" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+            <img src="images (10).jpg" alt="Foto 3" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+            <img src="images (7).jpg" alt="Foto 4" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+            <img src="images (30).jpg" alt="Foto 5" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+            <img src="images (27).jpg" alt="Foto 6" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+            <img src="images (21).jpg" alt="Foto 7" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+            <img src="images (23).jpg" alt="Foto 8" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+            <img src="images (20).jpg" alt="Foto 9" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+            <img src="images(11).jpg" alt="Foto 10" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+            <img src="images(2).jpg" alt="Foto 11" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+            <img src="images(22).jpg" alt="Foto 12" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+            <img src="images(25).jpg" alt="Foto 13" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+            <img src="imagis(16).jpg" alt="Foto 14" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+            <img src="images(26).jpg" alt="Foto 15" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+            <img src="images(3).jpg" alt="Foto 16" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+            <img src="images(4).jpg" alt="Foto 17" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+            <img src="images(5).jpg" alt="Foto 18" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+            <img src="images (1).jpg" alt="Foto 19" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+            <img src="images (10).jpg" alt="Foto 20" onclick="openModal(this)">
+        </div>
+        <div class="gallery-item">
+            <img src="images (15).jpg" alt="Foto 21" onclick="openModal(this)">
+        </div>
+    </div>
+
+    <!-- Modal untuk menampilkan gambar yang diklik -->
+    <div id="modal" class="modal" onclick="closeModal()">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        // Fungsi untuk membuka modal
+        function openModal(image) {
+            var modal = document.getElementById('modal');
+            var modalImg = document.getElementById('modalImage');
+            
+            // Tampilkan modal
+            modal.style.display = "block";
+            
+            // Set gambar di dalam modal sama dengan gambar yang diklik
+            modalImg.src = image.src;
+        }
+
+        // Fungsi untuk menutup modal saat area modal di klik
+        function closeModal() {
+            var modal = document.getElementById('modal');
+            
+            // Sembunyikan modal
+            modal.style.display = "none";
+        }
+    </script>
+</body>
+</html>
